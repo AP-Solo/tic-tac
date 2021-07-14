@@ -1,15 +1,36 @@
 const gameBoard = document.getElementById('game-board');
-const boxes = document.querySelector('#game-board .cell');
-const rematchBtn = document.getElementById('rematch')
+const boxes = document.getElementsByClassName('cell');
+const rematchBtn = document.getElementById('rematch');
 
 let board = ['', '', '', '', '', '', '', '', ''];
-let mainPlayer;
+let mainPlayer = {
+     cross :"x",
+     circle:'o'
+}
 let gameStart = true;
 
+// adds event listener to each element in the board*********************
+
+for(let i = 0; i < boxes.length; i++)
+{
+    boxes[i].addEventListener('click', playerSelection);
+}
+
+function playerSelection()
+{
+   if(this.classList === 'x'){
+       this.classList.toggle('o')
+   }
+   else
+   {
+     this.classList.add('x')
+   }
+    console.log('clicked');
+}
 
 //resets game on win,lose or draw**********************************
 
-rematchbtn.addEventListener('click', function rematch() {
+rematchBtn.addEventListener('click', function rematch() {
     for (i = 0; i < board.length; i++) {
         board[i].classList.remove('x', 'o')
     }
@@ -30,16 +51,19 @@ const winningPatterns = [
 
 
 // game progress**********************
-for (i = 0; i <= winningPatterns.length; i++) {
+for (let i = 0; i <= winningPatterns.length; i++) {
     let updates = winningPatterns[i];
 
 
 }
-if (winningPatters === true) {
-    return "Winner" + mainPlayer;
-} else {
-    return 'Tie Game'
+function checkStatus(){
+    if (winningPatters === true) {
+        return "Winner" + mainPlayer;
+    } else {
+        return 'Tie Game'
+    }
 }
+
 
 
 /*
