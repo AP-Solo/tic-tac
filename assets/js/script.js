@@ -3,23 +3,21 @@ const boxes = document.getElementsByClassName('cell');
 const rematchBtn = document.getElementById('rematch');
 
 let board = ['', '', '', '', '', '', '', '', ''];
-let mainPlayer = {
-     cross :"x",
-     circle:'o'
-}
+
+
 let gameStart = true;
 
 // adds event listener to each element in the board*********************
 
 for(let i = 0; i < boxes.length; i++)
 {
-    boxes[i].addEventListener('click', playerSelection);
+    boxes[i].addEventListener('click', playerSelection, {once: true});
 }
 
 function playerSelection()
 {
    if(this.classList === 'x'){
-       this.classList.toggle('o')
+       this.classList.add('o')
    }
    else
    {
