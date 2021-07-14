@@ -2,28 +2,48 @@ const gameBoard = document.getElementById('game-board');
 const boxes = document.getElementsByClassName('cell');
 const rematchBtn = document.getElementById('rematch');
 
-let board = ['', '', '', '', '', '', '', '', ''];
 
+let mainPlayer;
+const firstPlayerX = 'x';
+let isLastPlayedO = false;
 
-let gameStart = true;
+// startGame();
 
-// adds event listener to each element in the board*********************
+//   for(let i = 0; i < boxes.length; i++)
+//   {
+//     boxes[i].addEventListener('click', playerSelection, {once: true});
+// }
 
 for(let i = 0; i < boxes.length; i++)
 {
-    boxes[i].addEventListener('click', playerSelection, {once: true});
+  boxes[i].addEventListener('click', () => {
+      playerSelection(boxes[i]);
+  });
 }
 
-function playerSelection()
-{
-   if(this.classList === 'x'){
-       this.classList.add('o')
-   }
-   else
-   {
-     this.classList.add('x')
-   }
-    console.log('clicked');
+function playerSelection(box){
+    if (isLastPlayedO) {
+        box.classList.add('x')
+    } else {
+        box.classList.add('o')
+    }
+    isLastPlayedO = !isLastPlayedO;
+}  
+
+// function playerSelection(){
+//     for(box of boxes){
+//         if(this === 'x'){
+//             this.classList.add('o')
+//         }
+//         else{
+//             this.classList.add('o')
+//     }}
+// }  
+
+// control turn swap between X and O **********************************************************
+
+function turns(){
+    playermove = !playerMove;
 }
 
 //resets game on win,lose or draw**********************************
@@ -50,12 +70,12 @@ const winningPatterns = [
 
 // game progress**********************
 for (let i = 0; i <= winningPatterns.length; i++) {
-    let updates = winningPatterns[i];
+ winningPatterns[i]
 
 
 }
 function checkStatus(){
-    if (winningPatters === true) {
+    if (winningPatters[i] === true) {
         return "Winner" + mainPlayer;
     } else {
         return 'Tie Game'
@@ -72,4 +92,4 @@ function checkStatus(){
 5: add winning combinations
 6: apply winning combinations to the board to be updated once confirmed.
 7: apply a messeage if winning combination is not confirmed.
-8: regadless of win or loss apply a message to reset the game upon a win,loss or draw. */
+8: regardless of win or loss apply a message to reset the game upon a win,loss or draw. */
