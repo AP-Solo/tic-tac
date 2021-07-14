@@ -2,23 +2,17 @@ const gameBoard = document.getElementById('game-board');
 const boxes = document.getElementsByClassName('cell');
 const rematchBtn = document.getElementById('rematch');
 
-
-let mainPlayer;
 const firstPlayerX = 'x';
 let isLastPlayedO = false;
 
-// startGame();
-
-//   for(let i = 0; i < boxes.length; i++)
-//   {
-//     boxes[i].addEventListener('click', playerSelection, {once: true});
-// }
+// control turn swap between X and O **********************************************************
 
 for(let i = 0; i < boxes.length; i++)
 {
+    
   boxes[i].addEventListener('click', () => {
       playerSelection(boxes[i]);
-  });
+  }, {once : true});
 }
 
 function playerSelection(box){
@@ -30,21 +24,10 @@ function playerSelection(box){
     isLastPlayedO = !isLastPlayedO;
 }  
 
-// function playerSelection(){
-//     for(box of boxes){
-//         if(this === 'x'){
-//             this.classList.add('o')
-//         }
-//         else{
-//             this.classList.add('o')
-//     }}
-// }  
 
-// control turn swap between X and O **********************************************************
 
-function turns(){
-    playermove = !playerMove;
-}
+
+
 
 //resets game on win,lose or draw**********************************
 
@@ -69,18 +52,6 @@ const winningPatterns = [
 
 
 // game progress**********************
-for (let i = 0; i <= winningPatterns.length; i++) {
- winningPatterns[i]
-
-
-}
-function checkStatus(){
-    if (winningPatters[i] === true) {
-        return "Winner" + mainPlayer;
-    } else {
-        return 'Tie Game'
-    }
-}
 
 
 
